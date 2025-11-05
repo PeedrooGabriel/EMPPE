@@ -1,16 +1,18 @@
 package com.emppe.cliente.Models;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "clientes")
 public class Clientes {
 
 
@@ -34,6 +36,7 @@ public class Clientes {
     @NotNull(message = "A data de nascimento não pode ser nula")
     private LocalDate dataNascimento;
 
+    @Email(message = "Formato inválido")
     @NotBlank(message = "Email não pode ser nulo")
     @Column(length = 100, nullable = false)
     private String email;
